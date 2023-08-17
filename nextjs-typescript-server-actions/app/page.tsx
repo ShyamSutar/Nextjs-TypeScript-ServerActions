@@ -5,8 +5,8 @@ import TodoItem from "./components/TodoItem"
 
 export default async function Home() {
   
-  const {todos}= await getTodos()
-  console.log(todos + "dfa;sjf");
+  const todos = await getTodos()
+  console.log(todos + " ye hai");
   
 
   return (
@@ -20,10 +20,11 @@ export default async function Home() {
         <h2 className="mt-10 border-b pb-2 text-xl ">Previous Todos</h2>
 
         <ul className="mt-4 flex flex-col gap-1">
-          {todos?.map((todo) => {
+          {todos.map((todo:Todo) => (
             <TodoItem key={todo.id} todo={todo}/>
-          })}
+          ))}
         </ul>
+        
 
       </div>
     </div>
