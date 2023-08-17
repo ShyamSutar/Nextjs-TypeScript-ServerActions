@@ -5,7 +5,7 @@ import TodoItem from "./components/TodoItem"
 
 export default async function Home() {
   
-  const todos = await getTodos()
+  const todos:any = await getTodos()
   console.log(todos + " ye hai");
   
 
