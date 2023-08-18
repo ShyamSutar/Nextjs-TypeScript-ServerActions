@@ -1,6 +1,6 @@
 'use server'
 
-import { createTodo } from "@/lib/todos"
+import { createTodo, updateTodo } from "@/lib/todos"
 import { revalidatePath } from "next/cache"
 
 export async function createTodoAction(title: string){
@@ -11,4 +11,16 @@ export async function createTodoAction(title: string){
     } catch (error) {
         console.log(error);
     }
+}
+
+export async function updateTodoAction(id:string, isCompleted:boolean){
+    //perform update prisma client
+    try {
+        await updateTodo(id, isCompleted)
+    } catch (error) {
+        return(error)
+    }
+
+    //revalidate
+    revalidatePath('/')
 }
